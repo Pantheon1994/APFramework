@@ -1,0 +1,49 @@
+
+<div class="container">
+    <h2>Your App</h2>
+    <a href="" data-toggle="modal" data-target="#myModal2">Login</a> - <a href="" data-toggle="modal" data-target="#myModal">Subscribe</a>
+    <hr>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Inscription</h4>
+                </div>
+                <div class="modal-body">
+                    <subscribe
+                            error-email="Email invalide"
+                            error-match="Mot de passe ne corresponde pas"
+                            error-min-length="Mot de passe trop court !"
+                            min-length-password="5"
+                            sub-finish="Vous êtes bien inscris !"
+                            sub-not-finish="Email déjà prise !"
+                            button="Valider"
+                            url="createUser">
+                    </subscribe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel2">Connexion</h5>
+                </div>
+                <div class="modal-body">
+                    <connection
+                            button="Valider"
+                            url="connectionUser"
+                            next-url="/account"
+                            error-not-exist="L'adresse email, ou le mot de passe est inccorect !"
+                            >
+                    </connection>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->

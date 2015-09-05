@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>Bootstrap Angular Application</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="client/libs/bootstrap/dist/css/bootstrap.css">
+  <script src="client/libs/jquery/dist/jquery.js"></script>
+
+  <script src="client/libs/bootstrap/dist/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="client/style.css">
+
+  <!-- endinject -->
+</head>
+
+<body>
+
+<div ui-view>
+</div>
+
+<!-- inject:js -->
+
+<script src="client/libs/angular/angular.js"></script>
+<script src="client/libs/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="client/libs/angular-resource/angular-resource.js"></script>
+<script src="client/libs/angular-subscribe/ngSubscribe.js"></script>
+<script src="client/libs/angular-base64/src/angular-base64-upload.js"></script>
+<script src="client/libs/angular-cookie/angular-cookie.js"></script>
+<!-- endinject -->
+
+<!-- angular:js -->
+<script src="client/angular/app.js"></script>
+<script src="client/angular/config.js"></script>
+<script src="client/angular/routing.js"></script>
+<script src="client/angular/app/home/homeController.js"></script>
+<script src="client/angular/app/account/accountController.js"></script>
+<script src="client/angular/app/script/scriptController.js"></script>
+<script src="client/angular/services/sessionService.js"></script>
+<!-- endinject -->
+
+</body>
+</html>
