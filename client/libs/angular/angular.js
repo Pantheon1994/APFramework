@@ -25158,7 +25158,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
         <div class="animate-switch-container"
           ng-switch on="selection">
             <div class="animate-switch" ng-switch-when="settings">Settings Div</div>
-            <div class="animate-switch" ng-switch-when="home">Home Span</div>
+            <div class="animate-switch" ng-switch-when="search">Home Span</div>
             <div class="animate-switch" ng-switch-default>default</div>
         </div>
       </div>
@@ -25166,7 +25166,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
     <file name="script.js">
       angular.module('switchExample', ['ngAnimate'])
         .controller('ExampleController', ['$scope', function($scope) {
-          $scope.items = ['settings', 'home', 'other'];
+          $scope.items = ['settings', 'search', 'other'];
           $scope.selection = $scope.items[0];
         }]);
     </file>
@@ -25210,7 +25210,7 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
       it('should start in settings', function() {
         expect(switchElem.getText()).toMatch(/Settings Div/);
       });
-      it('should change to home', function() {
+      it('should change to search', function() {
         select.all(by.css('option')).get(1).click();
         expect(switchElem.getText()).toMatch(/Home Span/);
       });

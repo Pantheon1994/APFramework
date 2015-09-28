@@ -2,6 +2,10 @@
 
 class baseController {
 
+
+
+    private $arrayResponse;
+
     public static function call() {
 
         $args = func_get_args();
@@ -12,11 +16,20 @@ class baseController {
                 if(!isset($controllerParams[0]) || !isset($controllerParams[1])) {
                     throw new Exception('Missing params to controller settings');
                 } else {
-                    $controller = array(
-                        "class" => $controllerParams[0],
-                        "method" => $controllerParams[1],
-                        "params" => isset($args[1])
-                    );
+
+                    if(isset($args[1])) {
+                        $controller = array(
+                            "class" => $controllerParams[0],
+                            "method" => $controllerParams[1],
+                            "params" => $args[1]
+                        );
+                    } else {
+                        $controller = array(
+                            "class" => $controllerParams[0],
+                            "method" => $controllerParams[1],
+                            "params" => null
+                        );
+                    }
                     self::includeController($controller['class']);
                     $newObjectController = new $controller['class'];
                     call_user_func(array($newObjectController, $controller['method']), $controller['params']);
@@ -40,22 +53,33 @@ class baseController {
         return $request;
     }
 
-    /**
-     * @param $boolean
-     * @param string $success
-     * @param string $error
-     */
 
-    protected function callBack($boolean) {
-        if($boolean) {
-            echo "ok";
+
+    protected function response($data) {
+
+        $this->arrayResponse = $data;
+
+        if(!is_array($data)) {
+            $this->arrayResponse = get_object_vars($data);
+        }
+
+        $arrayError = array(
+            "RESPONSE" => "NO"
+        );
+
+        $arrayOk = array(
+            "RESPONSE" => "OK"
+        );
+
+        if(!empty($this->arrayResponse)) {
+           echo json_encode($arrayError);
         } else {
-            echo "no";
+            echo  json_encode(array_merge($this->arrayResponse, $arrayOk));
         }
     }
 
     /**
-     * @param $inc
+     * @param $include
      */
 
     private static function includeController ($include) {

@@ -21,7 +21,6 @@ $app->get('/', function() use ($app) {
     $app->render('index.html');
 });
 
-// USER ROUTING -----------------------------------
 $app->post('/createUser', function(){
     baseController::call('userController@createUser');
 });
@@ -29,7 +28,5 @@ $app->post('/createUser', function(){
 $app->post('/connectionUser', function(){
     baseController::call('userController@connectionUser');
 });
-// -------------------------------------------------
 
 $app->run();
-

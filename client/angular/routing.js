@@ -1,20 +1,14 @@
 angular.module('app').config([
-    '$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    '$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $urlRouterProvider.otherwise("home");
+        $urlRouterProvider.otherwise("/");
 
-        $stateProvider.state('home', {
-            url: "/home",
-            templateUrl: "client/angular/app/home/home.html",
-            controller: 'homeController',
-            controllerAs: 'home'
+        $stateProvider.state('/', {
+            url: "/",
+            templateUrl: "client/angular/app/start/start.html",
+            controller: 'startController',
+            controllerAs: 'start'
         });
 
-        $stateProvider.state('account', {
-            url: "/account",
-            templateUrl: "client/angular/app/account/account.html",
-            controller: 'accountController',
-            controllerAs: 'account'
-        });
     }
 ]);

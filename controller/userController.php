@@ -1,48 +1,43 @@
 <?php
 
+class userController
+    extends baseController {
 
-class userController extends baseController {
-
-    public function createUser() {
+    public function createUser()
+    {
         try {
-            if(R::find('user', 'email = ?', [$this->request()->email])){
-               echo "no";
+            $user = R::find('user', 'email = ?', [$this->request()->email]);
+            if($user){
+               $this->response($user);
             } else {
                 $user = R::dispense( 'user' );
                 $user->email = $this->request()->email;
                 $user->password = sha1($this->request()->password);
                 $user->authToken = 0;
-                $userId = R::store($user);
-                // Auth.
-                $this->callBack($userId);
+                 R::store($user);
+                $this->response($user);
             }
         } catch(Exception $e) {
-            echo $e->getMessage();
+            echo $e->getMessage() . $e->getFile() . $e->getLine();
         }
     }
-    /**
-     * @throws Exception
-     */
-    public function connectionUser() {
 
-
+    public function connectionUser()
+    {
         try {
-            $userId = R::findOne('user', 'email = ? AND password = ?',
+            $user = R::findOne('user', 'email = ? AND password = ?',
                 array($this->request()->email, sha1($this->request()->password)));
-            if($userId) {
-                $auth = new auth($userId->id);
+            if($user) {
+                $auth = new auth($user->id);
                 $auth->set();
-                $auth->update($userId->id);
-                // Send CallBack
-                $this->callBack($userId);
+                $auth->update($user->id);
+                $this->response($user);
             } else {
-                //Send Callback
-                $this->callBack($userId);
+                $this->response($user);
             }
         } catch(Exception $e) {
-            echo $e->getMessage() . $e->getFile();
+            echo $e->getMessage() . $e->getFile() . $e->getLine();
         }
 
     }
-
 }

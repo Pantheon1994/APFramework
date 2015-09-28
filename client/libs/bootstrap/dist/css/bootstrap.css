@@ -4,11 +4,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-html {
-  font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-}
 body {
   margin: 0;
 }
@@ -5255,6 +5250,7 @@ a.thumbnail.active {
 }
 .media-object {
   display: block;
+
 }
 .media-object.img-thumbnail {
   max-width: none;
