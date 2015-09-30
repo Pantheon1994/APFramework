@@ -1,4 +1,4 @@
-APFramework est un petit framework pour utiliser AngularJS (Javascript) et un PHP modern en 5.4.
+APFramework est un petit framework pour utiliser AngularJS (Javascript) et un PHP modern en 5.6.
 
 Back-end vendor : 
  * SlimFramework (Routing and HTTP request with middleware)  ([Website](http://docs.slimframework.com/))
