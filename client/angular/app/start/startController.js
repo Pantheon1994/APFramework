@@ -1,6 +1,7 @@
 angular.module('app.controllers').controller('startController', [
-    'session', function (session) {
-        var self = this;
+    'session', '$http', 'searchService',  function (session, $http, searchService) {
+        var vm = this;
+
 
 
     }

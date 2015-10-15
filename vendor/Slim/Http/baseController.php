@@ -2,8 +2,6 @@
 
 class baseController {
 
-
-
     private $arrayResponse;
 
     public static function call() {
@@ -54,24 +52,37 @@ class baseController {
     }
 
 
+    public function objectToArray( $object )
+    {
+        if( !is_object( $object ) && !is_array( $object ) )
+        {
+            return $object;
+        }
+        if( is_object( $object ) )
+        {
+            $object = get_object_vars( $object );
+        }
+        return array_map( 'objectToArray', $object );
+    }
+
+
+
 
     protected function response($data) {
 
-        $this->arrayResponse = $data;
-
-        if(!is_array($data)) {
-            $this->arrayResponse = get_object_vars($data);
+        if(is_object($data)) {
+            $this->arrayResponse = (array)($data);
         }
 
         $arrayError = array(
-            "RESPONSE" => "NO"
+            "RESPONSE" => "EMPTY"
         );
 
         $arrayOk = array(
             "RESPONSE" => "OK"
         );
 
-        if(!empty($this->arrayResponse)) {
+        if(empty($this->arrayResponse)) {
            echo json_encode($arrayError);
         } else {
             echo  json_encode(array_merge($this->arrayResponse, $arrayOk));

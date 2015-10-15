@@ -9,6 +9,5 @@ angular.module('app').config([
             controller: 'startController',
             controllerAs: 'start'
         });
-
     }
 ]);

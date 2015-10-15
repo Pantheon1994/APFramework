@@ -1,0 +1,81 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Comment ça marche ?</a></li>
+            </ul>
+            <ul ng-if="!currentUser" class="nav navbar-nav navbar-right">
+                <li><a  data-toggle="modal" data-target=".bs-modal-sm" >S'inscrire / se connecter</a></li>
+            </ul>
+            <ul ng-if="currentUser" class="nav navbar-nav navbar-right">
+                <li><a  data-toggle="modal" data-target=".bs-modal-sm" >Bonjour</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br/>
+<br/>
+<br/>
+<div class="container">
+</div>
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <br>
+            <div class="bs-example bs-example-tabs">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active"><a href="#signin" data-toggle="tab">Se connecter</a></li>
+                    <li class=""><a href="#signup" data-toggle="tab">S'inscrire</a></li>
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="signin">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <connection
+                                        button="Valider"
+                                        url="connectionUser"
+                                        next-url="/profile"
+                                        error-not-exist="L'adresse email, ou le mot de passe est incorrect !">
+                                </connection>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="signup">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <!-- Sign Up Form -->
+                                <!-- Text input-->
+                                <subscribe
+                                        error-email="Email invalide"
+                                        error-match="Mot de passe ne corresponde pas"
+                                        error-min-length="Mot de passe trop court !"
+                                        min-length-password="3"
+                                        sub-finish="Vous êtes bien inscris, vous pouvez maintenant vous connecter."
+                                        sub-not-finish="Cette adresse email est déjà prise, merci de en choisir une autre."
+                                        button="M'inscrire"
+                                        url="createUser">
+                                </subscribe>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
